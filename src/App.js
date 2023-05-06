@@ -1,7 +1,9 @@
+import React from 'react';
 import './App.css';
 
 import Context from './Context';
 import Sidebar from './Sidebar';
+import Button from './Components/Button/Button';
 
 function App() {
   return (
@@ -9,6 +11,7 @@ function App() {
       <div className="App">
    
         <Sidebar />
+        <Button/>
       </div>
 
     </Context.Provider>
