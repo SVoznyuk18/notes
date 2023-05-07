@@ -6,14 +6,23 @@ import { colors } from "ConfigsRoot/colors";
 
 import { InputWrapper, Input, SvgWrap } from './StyledComponents';
 
-const ClassicInput = ({ path, placeholder }) => {
+const ClassicInput = ({ path, width, height, padding, placeholder, fontSize, fontWeight, onChange, onClick, id, inputRef }) => {
     return (
-        <InputWrapper>
-
+        <InputWrapper
+            width={width}
+            height={height}
+        >
             <Input
                 placeholder={placeholder}
-
-
+                width={width}
+                height={height}
+                fontSize={fontSize}
+                fontWeight={fontWeight}
+                padding={padding}
+                onChange={onChange}
+                onClick={onClick}
+                id={id}
+                ref={inputRef}
             />
             <If condition={path}>
                 <SvgWrap>
@@ -36,7 +45,14 @@ ClassicInput.propTypes = {
     height: PropTypes.string,
     margin: PropTypes.string,
     colorShadow: PropTypes.string,
-    path: PropTypes.string
+    padding: PropTypes.string,
+    fontSize: PropTypes.string,
+    fontWeight: PropTypes.string,
+    path: PropTypes.string,
+    onChange: PropTypes.func,
+    onClick: PropTypes.func,
+    id: PropTypes.string,
+    inputRef: PropTypes.object
     // handleClick: PropTypes.func,
 };
 
@@ -45,7 +61,14 @@ ClassicInput.defaultProps = {
     height: '',
     margin: '',
     colorShadow: '',
-    path: ''
+    padding: '',
+    fontSize: '14px',
+    fontWeight: '400',
+    path: '',
+    onChange: () => { },
+    onClick: () => { },
+    id: '',
+    inputRef: {}
     // handleClick: () => { }
 };
 

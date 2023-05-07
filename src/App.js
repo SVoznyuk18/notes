@@ -3,7 +3,7 @@ import './App.css';
 
 import Context from './Context';
 
-import { Toolsbar, Sidebar } from 'ComponentsRoot';
+import { Toolsbar, Sidebar, WorkSpace } from 'ComponentsRoot';
 import {formatDate, formatFullDate} from 'UtilsRoot';
 // import iconSvg from 'AssetsRoot/svg/iconSvg';
 // import { colors } from "ConfigsRoot/colors";
@@ -18,6 +18,7 @@ function App() {
         <Toolsbar />
         <Wrapper>
           <Sidebar />
+          <WorkSpace/>
         </Wrapper>
       </div>
     </Context.Provider>
