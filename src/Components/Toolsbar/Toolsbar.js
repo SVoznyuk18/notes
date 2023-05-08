@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useContext} from "react";
 
 import { ClassicButton, SvgIcon, ClassicInput } from 'ComponentsRoot';
+import Context from 'UtilsRoot/Context';
 import iconSvg from 'AssetsRoot/svg/iconSvg';
 import { colors } from "ConfigsRoot/colors";
 
@@ -8,6 +9,19 @@ import { ToolsbarWrapper, ButtonsSection, SearchSection } from './StyledComponen
 
 
 const Toolsbar = () => {
+
+    const {setNewNote} = useContext(Context);
+
+    const handleAddNewNote = () => {
+        const noteConfig = {
+            id: Date.now(),
+            noteTitle: '', 
+            noteText: '',
+            noteDate: Date.now(),
+        }
+        setNewNote(noteConfig);
+    }
+
     return (
         <ToolsbarWrapper>
             <ButtonsSection>
@@ -16,6 +30,7 @@ const Toolsbar = () => {
                     height='25px'
                     margin='0 15px 0 0'
                     colorShadow={colors.green}
+                    handleClick={handleAddNewNote}
                 >
                     <SvgIcon
                         width='100%'
@@ -66,14 +81,11 @@ const Toolsbar = () => {
                 <ClassicInput
                     path={iconSvg.search}
                     placeholder='Search'
-                
                 />
-
-
             </SearchSection>
         </ToolsbarWrapper>
 
     );
-}
+};
 
 export default Toolsbar;

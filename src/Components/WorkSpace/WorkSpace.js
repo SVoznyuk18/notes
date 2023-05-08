@@ -1,26 +1,39 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useContext } from "react";
 
 import { ClassicInput, Textarea } from 'ComponentsRoot';
+import Context from 'UtilsRoot/Context';
 import { formatFullDate } from 'UtilsRoot';
 
-import { WorkSpaceWrap, WorkSpaceTitle } from './StyledComponents';
+import { WorkSpaceWrap, WorkSpaceTitle, Form } from './StyledComponents';
 
 const WorkSpace = () => {
 
+    const { editNote, setEditNote } = useContext(Context);
     const textareaRef = useRef();
     const inputRef = useRef();
 
     const handleChange = (e) => {
+        e.preventDefault();
+        const name = e.target.name;
+        const value = e.target.value;
+
+        setEditNote(()=> {
+            return {
+                ...editNote,
+                [name]: value
+            }
+        })
     }
 
     const handleClick = (e) => {
+
     }
 
     const handleChangeFocus = ({ code }) => {
-        if (code === 'Enter' && inputRef.current.id === 'noteTitleId') {
+        if (code === 'Enter' && inputRef.current.id === 'noteTitle') {
             textareaRef.current.focus();
         }
-        if (textareaRef.current.id === 'textarea' && inputRef.current.value === '' && code !== 'Backspace') {
+        if (textareaRef.current.id === 'noteText' && inputRef.current.value === '' && code !== 'Backspace') {
             inputRef.current.focus();
         }
     }
@@ -36,24 +49,31 @@ const WorkSpace = () => {
 
     return (
         <WorkSpaceWrap>
-            <WorkSpaceTitle>{formatFullDate(1683473529727)}</WorkSpaceTitle>
-            <ClassicInput
-                width='100%'
-                height='40px'
-                id='noteTitleId'
-                padding='0 20px'
-                fontSize='16px'
-                fontWeight='600'
-                onChange={handleChange}
-                onClick={handleClick}
-                inputRef={inputRef}
-            />
-            <Textarea
-                textareaRef={textareaRef}
-                onChange={handleChange}
-                onClick={handleClick}
-                id='textarea'
-            />
+            <WorkSpaceTitle>{formatFullDate(editNote?.noteDate)}</WorkSpaceTitle>
+            <Form onChange={handleChange}>
+                <ClassicInput
+                    width='100%'
+                    height='40px'
+                    id='noteTitle'
+                    name='noteTitle'
+                    padding='0 20px'
+                    fontSize='16px'
+                    fontWeight='600'
+                    value={editNote?.noteTitle}
+                    // onChange={handleChange}
+                    onClick={handleClick}
+                    inputRef={inputRef}
+                />
+                <Textarea
+                    textareaRef={textareaRef}
+                    // onChange={handleChange}
+                    value={editNote?.noteText}
+                    onClick={handleClick}
+                    id='noteText'
+                    name='noteText'
+                />
+            </Form>
+
         </WorkSpaceWrap>
 
     );

@@ -18,3 +18,8 @@ font-weight: 600;
 color: grey;
 letter-spacing: 2px;
 `;
+
+export const Form = styled.form`
+    width: 100%;
+    height: 100%;
+`

@@ -1,37 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 
-
+import { formatDate } from 'UtilsRoot';
+import Context from 'UtilsRoot/Context';
 import { NotesList, NoteItem, NoteTitle, NoteDescription, NoteDate, NoteText } from './StyleComponents';
 
-
 const Sidebar = () => {
-    return (
-        <NotesList>
-            <NoteItem>
-                <NoteTitle>фффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффффф</NoteTitle>
-                <NoteDescription>
-                    <NoteDate>2/10/2023</NoteDate>
-                    <NoteText> aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</NoteText>
-                </NoteDescription>
 
-            </NoteItem>
-            <NoteItem></NoteItem>
-            <NoteItem></NoteItem>
-            <NoteItem></NoteItem>
-            <NoteItem></NoteItem>
-            <NoteItem></NoteItem>
-            <NoteItem></NoteItem>
-            <NoteItem></NoteItem>
-            <NoteItem></NoteItem>
-            <NoteItem></NoteItem>
-            <NoteItem></NoteItem>
-            <NoteItem></NoteItem>
-            <NoteItem></NoteItem>
-            <NoteItem></NoteItem>
-            <NoteItem></NoteItem>
-            <NoteItem></NoteItem>
-            <NoteItem></NoteItem>
-            <NoteItem></NoteItem>
+    const { allNotes, setChosenNote } = useContext(Context);
+
+        return (
+        <NotesList>
+            {allNotes?.length > 0 && allNotes?.map(note => (
+                <NoteItem key={note?.id} onClick={() => setChosenNote(note)}>
+                    <NoteTitle>{note?.noteTitle}</NoteTitle>
+                    <NoteDescription>
+                        <NoteDate>{formatDate(note?.noteDate)}</NoteDate>
+                        <NoteText>{note?.noteText}</NoteText>
+                    </NoteDescription>
+
+                </NoteItem>
+            ))}
         </NotesList>
     )
 }
