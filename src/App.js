@@ -6,7 +6,7 @@ import Context from 'UtilsRoot/Context';
 
 import { db, addNewNote, getAllNotes, deleteNote, editNote } from 'UtilsRoot';
 
-import { Toolsbar, Sidebar, WorkSpace } from 'ComponentsRoot';
+import { Toolsbar, Sidebar, WorkSpace, Portal, Modal } from 'ComponentsRoot';
 import { formatDate, formatFullDate } from 'UtilsRoot';
 
 import { Wrapper } from './StyledComponents';
@@ -18,11 +18,11 @@ function App() {
   const [editNoteState, setEditNoteState] = useState({});
   const [deleteNoteState, setDeleteNoteState] = useState({});
   const [searchState, setSearchState] = useState('');
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   const allNotes = useLiveQuery(() => db.notes.toArray(), []);
   const filteredNotes = allNotes?.filter(note => note?.noteTitle.includes(searchState));
 
-  console.log(filteredNotes);
 
   const config = {
     id: 99992,
@@ -59,13 +59,16 @@ function App() {
 
 
   return (
-    <Context.Provider value={{ setNewNoteState, filteredNotes, setChosenNoteState, chosenNoteState, editNoteState, setEditNoteState, setDeleteNoteState, setSearchState, searchState }}>
+    <Context.Provider value={{ setNewNoteState, filteredNotes, setChosenNoteState, chosenNoteState, editNoteState, setEditNoteState, setDeleteNoteState, setSearchState, searchState, setIsOpenModal, isOpenModal }}>
       <div className="App">
         <Toolsbar />
         <Wrapper>
           <Sidebar />
           <WorkSpace />
         </Wrapper>
+        <Portal>
+          <Modal />
+        </Portal>
       </div>
     </Context.Provider>
   );

@@ -10,7 +10,7 @@ import { ToolsbarWrapper, ButtonsSection, SearchSection } from './StyledComponen
 
 const Toolsbar = () => {
 
-    const {setNewNoteState, chosenNoteState, setEditNoteState, setDeleteNoteState, setSearchState, searchState} = useContext(Context);
+    const {setNewNoteState, chosenNoteState, setEditNoteState, setDeleteNoteState, setSearchState, searchState, setIsOpenModal, isOpenModal} = useContext(Context);
 
     const handleAddNewNote = () => {
         const noteConfig = {
@@ -47,7 +47,8 @@ const Toolsbar = () => {
                     margin='0 15px 0 0'
                     colorShadow={colors.orange}
                     disabled={!chosenNoteState?.id}
-                    handleClick={()=> setDeleteNoteState(chosenNoteState)}
+                    // handleClick={()=> setDeleteNoteState(chosenNoteState)}
+                    handleClick={()=> setIsOpenModal(!isOpenModal)}
                 >
                     <SvgIcon
                         width='100%'

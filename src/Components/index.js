@@ -5,6 +5,8 @@ import ClassicInput from './ClassicInput/ClassicInput';
 import Sidebar from './Sidebar/Sidebar';
 import WorkSpace from './WorkSpace/WorkSpace';
 import Textarea from './Textarea/Textarea';
+import Portal from './Portal/Portal';
+import Modal from './Modal/Modal';
 
 export {
     ClassicButton,
@@ -13,5 +15,7 @@ export {
     ClassicInput,
     Sidebar,
     WorkSpace,
-    Textarea
+    Textarea,
+    Portal,
+    Modal
 };
