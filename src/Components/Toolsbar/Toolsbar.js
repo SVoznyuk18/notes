@@ -10,7 +10,7 @@ import { ToolsbarWrapper, ButtonsSection, SearchSection } from './StyledComponen
 
 const Toolsbar = () => {
 
-    const {setNewNote} = useContext(Context);
+    const {setNewNote, chosenNote, setEditNote} = useContext(Context);
 
     const handleAddNewNote = () => {
         const noteConfig = {
@@ -46,6 +46,7 @@ const Toolsbar = () => {
                     height='25px'
                     margin='0 15px 0 0'
                     colorShadow={colors.orange}
+                    disabled={!chosenNote?.id}
                 >
                     <SvgIcon
                         width='100%'
@@ -56,6 +57,7 @@ const Toolsbar = () => {
                         fillHover={colors.orange}
                         strokeHover='#373737'
                         stroke='#373737'
+                        disabled={!chosenNote?.id}
                     />
                 </ClassicButton>
                 <ClassicButton
@@ -63,6 +65,8 @@ const Toolsbar = () => {
                     height='25px'
                     margin='0 15px 0 0'
                     colorShadow={colors.ultramarine}
+                    disabled={!chosenNote?.id}
+                    handleClick={()=> setEditNote(chosenNote)}
                 >
                     <SvgIcon
                         width='100%'
@@ -71,6 +75,7 @@ const Toolsbar = () => {
                         path={iconSvg.edit}
                         fill={colors.grey}
                         fillHover={colors.ultramarine}
+                        disabled={!chosenNote?.id}
                     //   strokeHover='#373737'
                     //  stroke='#373737'
                     />

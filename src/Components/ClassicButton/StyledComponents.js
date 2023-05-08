@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import { colors } from "ConfigsRoot/colors";
 
 export const Button = styled.button`
@@ -11,7 +11,11 @@ export const Button = styled.button`
     border-radius: 4px;
     cursor: pointer;
 
-    &:hover {
-        box-shadow:  ${props => props.colorShadow ? `${props.colorShadow} 0px 3px 3px 0px, ${props.colorShadow} 0px 4px 6px 0px` : ''};
-    }
+
+    ${props => !props.disabled && css`
+        &:hover {
+            box-shadow:  ${props => props.colorShadow ? `${props.colorShadow} 0px 3px 3px 0px, ${props.colorShadow} 0px 4px 6px 0px` : ''};
+        }
+    
+    `}
 `;

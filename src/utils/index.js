@@ -19,8 +19,12 @@ export const formatDate = (noteDate) => {
 }
 
 export const formatFullDate = (noteDate) => {
-    const formatedFullDate = moment(noteDate).format('MMMM Do YYYY, h:mm a');
-    return formatedFullDate;
+    if (noteDate) {
+        const formatedFullDate = moment(noteDate).format('MMMM Do YYYY, h:mm a');
+        return formatedFullDate;
+    }
+    return false;
+
 }
 
 export const db = new Dexie('notesDb');
@@ -35,7 +39,6 @@ export const addNewNote = async (db, noteConfig) => {
     } catch {
         console.log('erros addNewNote');
     }
-    
 }
 
 // export const getAllNotes = (db,setAllNotes) => {

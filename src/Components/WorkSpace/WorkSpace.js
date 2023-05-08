@@ -16,7 +16,6 @@ const WorkSpace = () => {
         e.preventDefault();
         const name = e.target.name;
         const value = e.target.value;
-
         setEditNote(()=> {
             return {
                 ...editNote,
@@ -63,6 +62,8 @@ const WorkSpace = () => {
                     // onChange={handleChange}
                     onClick={handleClick}
                     inputRef={inputRef}
+                    disabled={!editNote?.id}
+
                 />
                 <Textarea
                     textareaRef={textareaRef}
@@ -71,6 +72,7 @@ const WorkSpace = () => {
                     onClick={handleClick}
                     id='noteText'
                     name='noteText'
+                    disabled={!editNote?.id}
                 />
             </Form>
 

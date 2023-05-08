@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { TextareaInput } from './StyledComponents';
 
-const Textarea = ({ width, height, padding, fontSize, fontWeight, onChange, onClick, textareaRef, id, name, value } ) => {
+const Textarea = ({ width, height, padding, fontSize, fontWeight, onChange, onClick, textareaRef, id, name, value,disabled } ) => {
 
     return (
         <TextareaInput
@@ -18,6 +18,7 @@ const Textarea = ({ width, height, padding, fontSize, fontWeight, onChange, onCl
             id={id}
             name={name}
             value={value}
+            disabled={disabled}
         />
     )
 };
@@ -33,7 +34,8 @@ Textarea.propTypes = {
     onClick: PropTypes.func,
     id: PropTypes.string,
     name: PropTypes.string,
-    value: PropTypes.string
+    value: PropTypes.string,
+    disabled: PropTypes.bool
     // handleClick: PropTypes.func,
 };
 
@@ -48,7 +50,8 @@ Textarea.defaultProps = {
     onClick: () => { },
     id: '',
     name: '',
-    value: ''
+    value: '',
+    disabled: false
     // handleClick: () => { }
 };
 

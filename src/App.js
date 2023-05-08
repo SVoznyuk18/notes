@@ -19,7 +19,6 @@ function App() {
   const [chosenNote, setChosenNote] = useState({});
   const [editNote, setEditNote] = useState({})
   const allNotes = useLiveQuery(() => db.notes.toArray(), []);
-  console.log('editNote',editNote);
 
   const config = {
     id: 99992,
@@ -28,20 +27,28 @@ function App() {
     noteDate: 1234567
   }
 
-//   const getAllNotes = (db) => {
-//     const allNotes = useLiveQuery(() => db.notes.toArray(), []);
-//     return allNotes;
-// }
-// const allNotes = useLiveQuery(() => db.notes.toArray(), []);
-  useEffect(() => {
-    setEditNote(chosenNote);
-  }, [chosenNote])
+  //   const getAllNotes = (db) => {
+  //     const allNotes = useLiveQuery(() => db.notes.toArray(), []);
+  //     return allNotes;
+  // }
+  // const allNotes = useLiveQuery(() => db.notes.toArray(), []);
+  // useEffect(() => {
+  //   setEditNote(chosenNote);
+  // }, [chosenNote])
+
 
   useEffect(() => {
     if (Object.keys(newNote).length) {
       addNewNote(db, newNote);
     }
-  }, [newNote]);
+
+    if (Object.keys(editNote).length) {
+      addNewNote(db, editNote);
+    }
+
+  }, [newNote, editNote])
+
+
 
   return (
     <Context.Provider value={{ setNewNote, allNotes, setChosenNote, chosenNote, editNote, setEditNote }}>

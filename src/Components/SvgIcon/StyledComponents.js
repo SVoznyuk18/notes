@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 export const Svg = styled.svg`
     margin: ${props => props.margin};
@@ -9,11 +9,13 @@ export const Svg = styled.svg`
     path {
         stroke: ${props => props.stroke};
     };
-    
-    &:hover {
-        fill: ${props => props.fillHover};
-        path {
-            stroke: ${props => props.strokeHover};
-        };
-    }
+
+    ${props => !props.disabled && css`
+        &:hover {
+            fill: ${props => props.fillHover};
+            path {
+                stroke: ${props => props.strokeHover};
+            };
+        }
+    `}
 `;

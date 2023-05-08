@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Svg } from './StyledComponents';
 
-const SvgIcon = memo(({ width, height, viewBox, fill, path, fillHover, margin, stroke, strokeHover, handleClick }) => {
+const SvgIcon = memo(({ width, height, viewBox, fill, path, fillHover, margin, stroke, strokeHover, handleClick, disabled }) => {
     return (
         <Svg
             width={width}
@@ -16,6 +16,7 @@ const SvgIcon = memo(({ width, height, viewBox, fill, path, fillHover, margin, s
             stroke={stroke}
             strokeHover={strokeHover}
             onClick={handleClick}
+            disabled={disabled}
         >
             <path
                 d={path}
@@ -34,7 +35,8 @@ SvgIcon.propTypes = {
     fillHover: PropTypes.string,
     stroke: PropTypes.string,
     strokeHover: PropTypes.string,
-    handleClick: PropTypes.func
+    handleClick: PropTypes.func,
+    disabled: PropTypes.bool
 };
 
 SvgIcon.defaultProps = {
@@ -46,7 +48,8 @@ SvgIcon.defaultProps = {
     fillHover: '',
     stroke: '',
     strokeHover: '',
-    handleClick: () => { }
+    handleClick: () => { },
+    disabled: false
 };
 
 export default SvgIcon;
