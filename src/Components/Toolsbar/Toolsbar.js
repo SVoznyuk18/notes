@@ -10,7 +10,7 @@ import { ToolsbarWrapper, ButtonsSection, SearchSection } from './StyledComponen
 
 const Toolsbar = () => {
 
-    const {setNewNoteState, chosenNoteState, setEditNoteState, setDeleteNoteState} = useContext(Context);
+    const {setNewNoteState, chosenNoteState, setEditNoteState, setDeleteNoteState, setSearchState, searchState} = useContext(Context);
 
     const handleAddNewNote = () => {
         const noteConfig = {
@@ -87,6 +87,8 @@ const Toolsbar = () => {
                 <ClassicInput
                     path={iconSvg.search}
                     placeholder='Search'
+                    onChange={(e) => setSearchState(e.target.value)}
+                    value={searchState}
                 />
             </SearchSection>
         </ToolsbarWrapper>

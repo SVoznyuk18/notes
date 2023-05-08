@@ -1,9 +1,9 @@
-import React, {memo} from "react";
+import React, { memo } from "react";
 import PropTypes from 'prop-types';
 
 import { Button } from './StyledComponents';
 
-const ClassicButton = memo(({ children, width, height, margin, colorShadow, handleClick, disabled  }) => {
+const ClassicButton = memo(({ children, width, height, margin, colorShadow, handleClick, disabled }) => {
     return (
         <Button
             width={width}

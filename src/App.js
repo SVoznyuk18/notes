@@ -8,8 +8,6 @@ import { db, addNewNote, getAllNotes, deleteNote, editNote } from 'UtilsRoot';
 
 import { Toolsbar, Sidebar, WorkSpace } from 'ComponentsRoot';
 import { formatDate, formatFullDate } from 'UtilsRoot';
-// import iconSvg from 'AssetsRoot/svg/iconSvg';
-// import { colors } from "ConfigsRoot/colors";
 
 import { Wrapper } from './StyledComponents';
 
@@ -19,8 +17,12 @@ function App() {
   const [chosenNoteState, setChosenNoteState] = useState({});
   const [editNoteState, setEditNoteState] = useState({});
   const [deleteNoteState, setDeleteNoteState] = useState({});
+  const [searchState, setSearchState] = useState('');
 
   const allNotes = useLiveQuery(() => db.notes.toArray(), []);
+  const filteredNotes = allNotes?.filter(note => note?.noteTitle.includes(searchState));
+
+  console.log(filteredNotes);
 
   const config = {
     id: 99992,
@@ -57,7 +59,7 @@ function App() {
 
 
   return (
-    <Context.Provider value={{ setNewNoteState, allNotes, setChosenNoteState, chosenNoteState, editNoteState, setEditNoteState, setDeleteNoteState }}>
+    <Context.Provider value={{ setNewNoteState, filteredNotes, setChosenNoteState, chosenNoteState, editNoteState, setEditNoteState, setDeleteNoteState, setSearchState, searchState }}>
       <div className="App">
         <Toolsbar />
         <Wrapper>

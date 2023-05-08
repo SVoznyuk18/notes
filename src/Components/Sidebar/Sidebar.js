@@ -6,12 +6,12 @@ import { NotesList, NoteItem, NoteTitle, NoteDescription, NoteDate, NoteText } f
 
 const Sidebar = () => {
 
-    const { allNotes, chosenNoteState, setChosenNoteState } = useContext(Context);
+    const { filteredNotes, chosenNoteState, setChosenNoteState } = useContext(Context);
 
 
         return (
         <NotesList>
-            {allNotes?.length > 0 && allNotes?.map(note => (
+            {filteredNotes?.length > 0 && filteredNotes?.map(note => (
                 <NoteItem active={chosenNoteState?.id === note?.id} key={note?.id} onClick={() => setChosenNoteState(note)}>
                     <NoteTitle>{note?.noteTitle}</NoteTitle>
                     <NoteDescription>
