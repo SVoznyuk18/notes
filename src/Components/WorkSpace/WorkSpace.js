@@ -8,7 +8,7 @@ import { WorkSpaceWrap, WorkSpaceTitle, Form } from './StyledComponents';
 
 const WorkSpace = () => {
 
-    const { editNote, setEditNote } = useContext(Context);
+    const { editNoteState, setEditNoteState } = useContext(Context);
     const textareaRef = useRef();
     const inputRef = useRef();
 
@@ -16,9 +16,9 @@ const WorkSpace = () => {
         e.preventDefault();
         const name = e.target.name;
         const value = e.target.value;
-        setEditNote(()=> {
+        setEditNoteState(()=> {
             return {
-                ...editNote,
+                ...editNoteState,
                 [name]: value
             }
         })
@@ -48,7 +48,7 @@ const WorkSpace = () => {
 
     return (
         <WorkSpaceWrap>
-            <WorkSpaceTitle>{formatFullDate(editNote?.noteDate)}</WorkSpaceTitle>
+            <WorkSpaceTitle>{formatFullDate(editNoteState?.noteDate)}</WorkSpaceTitle>
             <Form onChange={handleChange}>
                 <ClassicInput
                     width='100%'
@@ -58,21 +58,21 @@ const WorkSpace = () => {
                     padding='0 20px'
                     fontSize='16px'
                     fontWeight='600'
-                    value={editNote?.noteTitle}
+                    value={editNoteState?.noteTitle}
                     // onChange={handleChange}
                     onClick={handleClick}
                     inputRef={inputRef}
-                    disabled={!editNote?.id}
+                    disabled={!editNoteState?.id}
 
                 />
                 <Textarea
                     textareaRef={textareaRef}
                     // onChange={handleChange}
-                    value={editNote?.noteText}
+                    value={editNoteState?.noteText}
                     onClick={handleClick}
                     id='noteText'
                     name='noteText'
-                    disabled={!editNote?.id}
+                    disabled={!editNoteState?.id}
                 />
             </Form>
 

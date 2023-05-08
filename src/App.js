@@ -15,9 +15,11 @@ import { Wrapper } from './StyledComponents';
 
 function App() {
 
-  const [newNote, setNewNote] = useState({});
-  const [chosenNote, setChosenNote] = useState({});
-  const [editNote, setEditNote] = useState({})
+  const [newNoteState, setNewNoteState] = useState({});
+  const [chosenNoteState, setChosenNoteState] = useState({});
+  const [editNoteState, setEditNoteState] = useState({});
+  const [deleteNoteState, setDeleteNoteState] = useState({});
+
   const allNotes = useLiveQuery(() => db.notes.toArray(), []);
 
   const config = {
@@ -38,20 +40,24 @@ function App() {
 
 
   useEffect(() => {
-    if (Object.keys(newNote).length) {
-      addNewNote(db, newNote);
+    if (Object.keys(newNoteState).length) {
+      addNewNote(db, newNoteState);
     }
 
-    if (Object.keys(editNote).length) {
-      addNewNote(db, editNote);
+    if (Object.keys(editNoteState).length) {
+      addNewNote(db, editNoteState);
     }
 
-  }, [newNote, editNote])
+    if (Object.keys(deleteNoteState).length) {
+      deleteNote(db, deleteNoteState?.id);
+    }
+
+  }, [newNoteState, editNoteState, deleteNoteState])
 
 
 
   return (
-    <Context.Provider value={{ setNewNote, allNotes, setChosenNote, chosenNote, editNote, setEditNote }}>
+    <Context.Provider value={{ setNewNoteState, allNotes, setChosenNoteState, chosenNoteState, editNoteState, setEditNoteState, setDeleteNoteState }}>
       <div className="App">
         <Toolsbar />
         <Wrapper>

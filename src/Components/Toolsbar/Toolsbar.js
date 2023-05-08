@@ -10,7 +10,7 @@ import { ToolsbarWrapper, ButtonsSection, SearchSection } from './StyledComponen
 
 const Toolsbar = () => {
 
-    const {setNewNote, chosenNote, setEditNote} = useContext(Context);
+    const {setNewNoteState, chosenNoteState, setEditNoteState, setDeleteNoteState} = useContext(Context);
 
     const handleAddNewNote = () => {
         const noteConfig = {
@@ -19,7 +19,7 @@ const Toolsbar = () => {
             noteText: '',
             noteDate: Date.now(),
         }
-        setNewNote(noteConfig);
+        setNewNoteState(noteConfig);
     }
 
     return (
@@ -46,7 +46,8 @@ const Toolsbar = () => {
                     height='25px'
                     margin='0 15px 0 0'
                     colorShadow={colors.orange}
-                    disabled={!chosenNote?.id}
+                    disabled={!chosenNoteState?.id}
+                    handleClick={()=> setDeleteNoteState(chosenNoteState)}
                 >
                     <SvgIcon
                         width='100%'
@@ -57,7 +58,7 @@ const Toolsbar = () => {
                         fillHover={colors.orange}
                         strokeHover='#373737'
                         stroke='#373737'
-                        disabled={!chosenNote?.id}
+                        disabled={!chosenNoteState?.id}
                     />
                 </ClassicButton>
                 <ClassicButton
@@ -65,8 +66,8 @@ const Toolsbar = () => {
                     height='25px'
                     margin='0 15px 0 0'
                     colorShadow={colors.ultramarine}
-                    disabled={!chosenNote?.id}
-                    handleClick={()=> setEditNote(chosenNote)}
+                    disabled={!chosenNoteState?.id}
+                    handleClick={()=> setEditNoteState(chosenNoteState)}
                 >
                     <SvgIcon
                         width='100%'
@@ -75,7 +76,7 @@ const Toolsbar = () => {
                         path={iconSvg.edit}
                         fill={colors.grey}
                         fillHover={colors.ultramarine}
-                        disabled={!chosenNote?.id}
+                        disabled={!chosenNoteState?.id}
                     //   strokeHover='#373737'
                     //  stroke='#373737'
                     />
