@@ -39,7 +39,7 @@ export const CloseButton = styled.div`
 
     &: hover {
         svg {
-            fill: ${colors.orange};
+            fill: ${colors.reject};
         }
     }
 `;

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { colors } from "ConfigsRoot/colors";
+
 export const WorkSpaceWrap = styled.div`
     width: 70%;
     height:  100%;
@@ -7,16 +9,21 @@ export const WorkSpaceWrap = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 0 10px;
+    margin-left: 10px;
+    background-color: ${colors.primary};
+    border-radius: 4px;
 `;
 
-
 export const WorkSpaceTitle = styled.div`
-font-size: 18px;
-line-height: 18px;
-font-weight: 600;
-color: grey;
-letter-spacing: 2px;
+    width: 100%;
+    height: 20px;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 600;
+    color: grey;
+    letter-spacing: 2px;
+    background-color: ${colors.primary};
+    text-align: center;
 `;
 
 export const Form = styled.form`

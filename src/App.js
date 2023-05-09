@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
+// import './App.css';
 
 import { Toolsbar, Sidebar, WorkSpace, Portal, Modal } from 'ComponentsRoot';
 import Context from 'UtilsRoot/Context';
@@ -57,7 +57,7 @@ function App() {
 
   return (
     <Context.Provider value={{filteredNotes, setChosenNoteState, chosenNoteState, editNoteState, setSearchState, searchState, isOpenModal, handleDeleteNote, handleToggleModal, handleAddNote, handleEditNote, handleGetById, setEditNoteState }}>
-      <div className="App">
+      <>
         <Toolsbar />
         <Wrapper>
           <Sidebar />
@@ -66,7 +66,7 @@ function App() {
         <Portal>
           <Modal />
         </Portal>
-      </div>
+      </>
     </Context.Provider>
   );
 }

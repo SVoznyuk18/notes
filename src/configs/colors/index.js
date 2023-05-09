@@ -1,13 +1,7 @@
 export const colors = {
-    white: '#ffffff',
-    black: '#232323',
-    background: '#ffdf8c',
-    greyLine: '#f6f6f6',
-    orange: '#fe5f1e',
-    errorMessage: '#B82020',
-    validColor: '#32CD30',
-    grey: '#8e8e8e',
-    disabledColor: '#8e8e8e',
-    green: '#32CD32',
-    ultramarine: '#0437F2'
+    primary: '#f6f6f6',
+    secondary: '#8e8e8e',
+    create:'#32CD32',
+    reject: '#fe5f1e',
+    edit: '#0437F2'
 };

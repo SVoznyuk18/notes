@@ -24,7 +24,7 @@ export const NoteItem = styled.div`
     justify-content: flex-start;
     border-radius: 4px;
     cursor: pointer;
-    background-color: ${props => props.active ? colors.grey : colors.greyLine };
+    background-color: ${props => props.active ? colors.secondary : colors.primary };
 
     &:active {
         transform: translate(0px, 2px);

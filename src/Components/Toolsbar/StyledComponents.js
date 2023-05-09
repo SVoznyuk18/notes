@@ -7,7 +7,7 @@ export const ToolsbarWrapper = styled.div`
     align-items: center;
     justify-content: center;
     padding: 5px 15px;
-    background-color: ${colors.grey};
+    background-color: ${colors.secondary};
 
 `;
 export const ButtonsSection = styled.div`

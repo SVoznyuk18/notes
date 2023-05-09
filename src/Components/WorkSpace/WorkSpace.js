@@ -65,6 +65,7 @@ const WorkSpace = () => {
 
                 />
                 <Textarea
+                    height='calc(100% - 40px - 20px)'
                     textareaRef={textareaRef}
                     value={editNoteState?.noteText}
                     id='noteText'

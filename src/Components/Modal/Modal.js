@@ -28,7 +28,7 @@ const Modal = () => {
                         <ClassicButton
                             width='auto'
                             height='auto'
-                            border={`solid 2px ${colors.green}`}
+                            border={`solid 2px ${colors.create}`}
                             handleClick={() => handleDeleteNote(chosenNoteState?.id)}
                         >
 
@@ -37,7 +37,7 @@ const Modal = () => {
                         <ClassicButton
                             width='auto'
                             height='auto'
-                            border={`solid 2px ${colors.orange}`}
+                            border={`solid 2px ${colors.reject}`}
                             handleClick={handleToggleModal}
                         >
                             Скасувати

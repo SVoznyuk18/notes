@@ -34,8 +34,8 @@ const ClassicInput = ({ path, width, height, padding, placeholder, fontSize, fon
                         height='20px'
                         viewBox='3 3 20 20'
                         path={path}
-                        fill={colors.grey}
-                        fillHover={colors.green}
+                        fill={colors.secondary}
+                        fillHover={colors.create}
                     />
                 </SvgWrap>
             </If>
@@ -59,7 +59,6 @@ ClassicInput.propTypes = {
     name: PropTypes.string,
     value: PropTypes.string,
     disabled: PropTypes.bool
-    // handleClick: PropTypes.func,
 };
 
 ClassicInput.defaultProps = {
@@ -78,7 +77,6 @@ ClassicInput.defaultProps = {
     name: '',
     value: '',
     disabled: false
-    // handleClick: () => { }
 };
 
 export default ClassicInput;

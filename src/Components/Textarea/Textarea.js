@@ -1,9 +1,9 @@
-import React, {forwardRef, useRef} from "react";
+import React, { forwardRef, useRef } from "react";
 import PropTypes from 'prop-types';
 
 import { TextareaInput } from './StyledComponents';
 
-const Textarea = ({ width, height, padding, fontSize, fontWeight, onChange, onClick, textareaRef, id, name, value,disabled } ) => {
+const Textarea = ({ width, height, padding, fontSize, fontWeight, onChange, onClick, textareaRef, id, name, value, disabled }) => {
 
     return (
         <TextareaInput
@@ -35,8 +35,7 @@ Textarea.propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
     value: PropTypes.string,
-    disabled: PropTypes.bool
-    // handleClick: PropTypes.func,
+    disabled: PropTypes.bool,
 };
 
 Textarea.defaultProps = {
@@ -51,8 +50,7 @@ Textarea.defaultProps = {
     id: '',
     name: '',
     value: '',
-    disabled: false
-    // handleClick: () => { }
+    disabled: false,
 };
 
 export default Textarea;

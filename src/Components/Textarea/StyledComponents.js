@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { colors } from "ConfigsRoot/colors";
+
 export const TextareaInput = styled.textarea`
     width: ${props => props.width || '100%'};
     height: ${props => props.height || '100%'};
@@ -9,4 +11,5 @@ export const TextareaInput = styled.textarea`
     resize: none;
     letter-spacing: 1px;
     border: none;
+    background-color: ${colors.primary}
 `;

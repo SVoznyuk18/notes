@@ -6,7 +6,7 @@ export const Button = styled.button`
     height: ${props => props.height || '25px'};
     padding: ${props => props.padding || '3px 2px'};
     margin: ${props => props.margin || '0px'};
-    background-color: ${colors.white};
+    background-color: ${colors.primary};
     border: ${props => props.border || 'none'};
     border-radius: 4px;
     cursor: pointer;

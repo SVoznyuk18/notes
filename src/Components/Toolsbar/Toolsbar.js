@@ -28,7 +28,7 @@ const Toolsbar = () => {
                     width='50px'
                     height='25px'
                     margin='0 15px 0 0'
-                    colorShadow={colors.green}
+                    colorShadow={colors.create}
                     handleClick={addNewNote}
                 >
                     <SvgIcon
@@ -36,15 +36,15 @@ const Toolsbar = () => {
                         height='100%'
                         viewBox='0 0 10 10'
                         path={iconSvg.plus}
-                        fill={colors.grey}
-                        fillHover={colors.green}
+                        fill={colors.secondary}
+                        fillHover={colors.create}
                     />
                 </ClassicButton>
                 <ClassicButton
                     width='50px'
                     height='25px'
                     margin='0 15px 0 0'
-                    colorShadow={colors.orange}
+                    colorShadow={colors.reject}
                     disabled={!chosenNoteState?.id}
                     handleClick={handleToggleModal}
                 >
@@ -53,8 +53,8 @@ const Toolsbar = () => {
                         height='100%'
                         viewBox='0 0 20 20'
                         path={iconSvg.trash}
-                        fill={colors.grey}
-                        fillHover={colors.orange}
+                        fill={colors.secondary}
+                        fillHover={colors.reject}
                         strokeHover='#373737'
                         stroke='#373737'
                         disabled={!chosenNoteState?.id}
@@ -64,7 +64,7 @@ const Toolsbar = () => {
                     width='50px'
                     height='25px'
                     margin='0 15px 0 0'
-                    colorShadow={colors.ultramarine}
+                    colorShadow={colors.edit}
                     disabled={!chosenNoteState?.id}
                     handleClick={() => handleGetById({id: chosenNoteState?.id})}
                 >
@@ -73,14 +73,15 @@ const Toolsbar = () => {
                         height='100%'
                         viewBox='-2 3 25 25'
                         path={iconSvg.edit}
-                        fill={colors.grey}
-                        fillHover={colors.ultramarine}
+                        fill={colors.secondary}
+                        fillHover={colors.edit}
                         disabled={!chosenNoteState?.id}
                     />
                 </ClassicButton>
             </ButtonsSection>
             <SearchSection>
                 <ClassicInput
+                    width='45%'
                     path={iconSvg.search}
                     placeholder='Search'
                     onChange={(e) => setSearchState(e.target.value)}
