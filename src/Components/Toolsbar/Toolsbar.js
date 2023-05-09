@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 
 import { ClassicButton, SvgIcon, ClassicInput } from 'ComponentsRoot';
 import Context from 'UtilsRoot/Context';
@@ -7,19 +7,18 @@ import { colors } from "ConfigsRoot/colors";
 
 import { ToolsbarWrapper, ButtonsSection, SearchSection } from './StyledComponents';
 
-
 const Toolsbar = () => {
 
-    const {setNewNoteState, chosenNoteState, setEditNoteState, setSearchState, searchState, handleToggleModal} = useContext(Context);
+    const { chosenNoteState, setSearchState, searchState, handleToggleModal, handleAddNote, handleGetById } = useContext(Context);
 
-    const handleAddNewNote = () => {
+    const addNewNote = () => {
         const noteConfig = {
             id: Date.now(),
-            noteTitle: '', 
+            noteTitle: '',
             noteText: '',
             noteDate: Date.now(),
         }
-        setNewNoteState(noteConfig);
+        handleAddNote(noteConfig);
     }
 
     return (
@@ -30,7 +29,7 @@ const Toolsbar = () => {
                     height='25px'
                     margin='0 15px 0 0'
                     colorShadow={colors.green}
-                    handleClick={handleAddNewNote}
+                    handleClick={addNewNote}
                 >
                     <SvgIcon
                         width='100%'
@@ -67,7 +66,7 @@ const Toolsbar = () => {
                     margin='0 15px 0 0'
                     colorShadow={colors.ultramarine}
                     disabled={!chosenNoteState?.id}
-                    handleClick={()=> setEditNoteState(chosenNoteState)}
+                    handleClick={() => handleGetById({id: chosenNoteState?.id})}
                 >
                     <SvgIcon
                         width='100%'
@@ -77,11 +76,8 @@ const Toolsbar = () => {
                         fill={colors.grey}
                         fillHover={colors.ultramarine}
                         disabled={!chosenNoteState?.id}
-                    //   strokeHover='#373737'
-                    //  stroke='#373737'
                     />
                 </ClassicButton>
-
             </ButtonsSection>
             <SearchSection>
                 <ClassicInput
@@ -92,7 +88,6 @@ const Toolsbar = () => {
                 />
             </SearchSection>
         </ToolsbarWrapper>
-
     );
 };
 

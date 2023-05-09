@@ -8,7 +8,7 @@ import { WorkSpaceWrap, WorkSpaceTitle, Form } from './StyledComponents';
 
 const WorkSpace = () => {
 
-    const { editNoteState, setEditNoteState } = useContext(Context);
+    const { editNoteState, setEditNoteState, chosenNoteState, handleEditNote } = useContext(Context);
     const textareaRef = useRef();
     const inputRef = useRef();
 
@@ -16,16 +16,18 @@ const WorkSpace = () => {
         e.preventDefault();
         const name = e.target.name;
         const value = e.target.value;
-        setEditNoteState(()=> {
+
+        const noteConfig = {
+            ...editNoteState,
+            [name]: value
+        }
+        setEditNoteState(() => {
             return {
                 ...editNoteState,
                 [name]: value
             }
         })
-    }
-
-    const handleClick = (e) => {
-
+        handleEditNote(chosenNoteState?.id, noteConfig)
     }
 
     const handleChangeFocus = ({ code }) => {
@@ -43,8 +45,7 @@ const WorkSpace = () => {
         return () => {
             window.removeEventListener('keydown', handleChangeFocus);
         };
-    }, []
-    );
+    }, []);
 
     return (
         <WorkSpaceWrap>
@@ -59,25 +60,19 @@ const WorkSpace = () => {
                     fontSize='16px'
                     fontWeight='600'
                     value={editNoteState?.noteTitle}
-                    // onChange={handleChange}
-                    onClick={handleClick}
                     inputRef={inputRef}
                     disabled={!editNoteState?.id}
 
                 />
                 <Textarea
                     textareaRef={textareaRef}
-                    // onChange={handleChange}
                     value={editNoteState?.noteText}
-                    onClick={handleClick}
                     id='noteText'
                     name='noteText'
                     disabled={!editNoteState?.id}
                 />
             </Form>
-
         </WorkSpaceWrap>
-
     );
 }
 

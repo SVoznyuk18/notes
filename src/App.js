@@ -1,71 +1,62 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { useLiveQuery } from "dexie-react-hooks";
-
-import Context from 'UtilsRoot/Context';
-
-import { db, addNewNote, getAllNotes, deleteNote, editNote } from 'UtilsRoot';
 
 import { Toolsbar, Sidebar, WorkSpace, Portal, Modal } from 'ComponentsRoot';
-import { formatDate, formatFullDate } from 'UtilsRoot';
-
+import Context from 'UtilsRoot/Context';
+import { add, del, update, get, getById } from 'UtilsRoot/db';
 import { Wrapper } from './StyledComponents';
 
 function App() {
 
-  const [newNoteState, setNewNoteState] = useState({});
+  const [allNotes, setAllNotes] = useState([]);
   const [chosenNoteState, setChosenNoteState] = useState({});
   const [editNoteState, setEditNoteState] = useState({});
   const [searchState, setSearchState] = useState('');
   const [isOpenModal, setIsOpenModal] = useState(false);
 
-  const allNotes = useLiveQuery(() => db.notes.toArray(), []);
   const filteredNotes = allNotes?.filter(note => note?.noteTitle.includes(searchState));
 
-  const config = {
-    id: 99992,
-    noteTitle: 'test 22222',
-    noteText: 'abrbrbrbbrbr',
-    noteDate: 1234567
+  const handleGet = async () => {
+    const notes = await get();
+    setAllNotes(notes);
   }
 
+  const handleAddNote = (id, params) => {
+    add(id, params);
+    handleGet();
+  }
 
-
-  //   const getAllNotes = (db) => {
-  //     const allNotes = useLiveQuery(() => db.notes.toArray(), []);
-  //     return allNotes;
-  // }
-  // const allNotes = useLiveQuery(() => db.notes.toArray(), []);
-  // useEffect(() => {
-  //   setEditNote(chosenNote);
-  // }, [chosenNote])
-
-
-  useEffect(() => {
-    if (Object.keys(newNoteState).length) {
-      addNewNote(db, newNoteState);
-    }
-
-    if (Object.keys(editNoteState).length) {
-      console.log('test');
-      editNote(db, editNoteState?.id, editNoteState);
-    }
-
-  }, [newNoteState, editNoteState])
-
+  const handleEditNote = (id, params) => {
+    update(id, params);
+    handleGet();
+  }
 
   const handleDeleteNote = (id) => {
-    deleteNote(db, id);
+    del(id);
     handleToggleModal();
+    handleGet();
+  }
+
+  const handleGetById = async (id) => {
+    const note = await getById(id);
+    setEditNoteState({
+      id: note[0]?.id,
+      noteDate: note[0]?.id,
+      noteTitle: note[0]?.noteTitle,
+      noteText: note[0]?.noteText
+    });
   }
 
   const handleToggleModal = () => {
     setIsOpenModal(!isOpenModal);
   }
 
+  useEffect(() => {
+    handleGet();
+  }, [])
 
   return (
-    <Context.Provider value={{ setNewNoteState, filteredNotes, setChosenNoteState, chosenNoteState, editNoteState, setEditNoteState, setSearchState, searchState, isOpenModal, handleDeleteNote, handleToggleModal }}>
+    <Context.Provider value={{filteredNotes, setChosenNoteState, chosenNoteState, editNoteState, setSearchState, searchState, isOpenModal, handleDeleteNote, handleToggleModal, handleAddNote, handleEditNote, handleGetById, setEditNoteState }}>
       <div className="App">
         <Toolsbar />
         <Wrapper>

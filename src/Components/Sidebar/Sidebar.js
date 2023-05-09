@@ -8,8 +8,7 @@ const Sidebar = () => {
 
     const { filteredNotes, chosenNoteState, setChosenNoteState } = useContext(Context);
 
-
-        return (
+    return (
         <NotesList>
             {filteredNotes?.length > 0 && filteredNotes?.map(note => (
                 <NoteItem active={chosenNoteState?.id === note?.id} key={note?.id} onClick={() => setChosenNoteState(note)}>

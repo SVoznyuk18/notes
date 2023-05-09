@@ -9,9 +9,8 @@ import { colors } from "ConfigsRoot/colors";
 
 const Modal = () => {
 
-    const {isOpenModal, chosenNoteState, handleDeleteNote, handleToggleModal } = useContext(Context);
+    const { isOpenModal, chosenNoteState, handleDeleteNote, handleToggleModal } = useContext(Context);
 
-   
     return (
         <ModalWrapper isOpenModal={isOpenModal}>
             <ModalContainer>
@@ -24,38 +23,26 @@ const Modal = () => {
                     />
                 </CloseButton>
                 <ModalContent>
-
                     <ModalTitle>Ви впевнені, що хочете видалити нотаток "{chosenNoteState?.noteTitle}"</ModalTitle>
                     <ButtonSection>
                         <ClassicButton
                             width='auto'
                             height='auto'
                             border={`solid 2px ${colors.green}`}
-                        //  margin={margin}
-                        //  colorShadow={colorShadow}
-                            handleClick={()=> handleDeleteNote(chosenNoteState?.id)}
-                        //  disabled={disabled}
+                            handleClick={() => handleDeleteNote(chosenNoteState?.id)}
                         >
 
                             Видалити
                         </ClassicButton>
-
                         <ClassicButton
                             width='auto'
                             height='auto'
                             border={`solid 2px ${colors.orange}`}
-                        //  margin={margin}
-                        //  colorShadow={colorShadow}
                             handleClick={handleToggleModal}
-                        //  disabled={disabled}
                         >
-
                             Скасувати
                         </ClassicButton>
-
-
                     </ButtonSection>
-
                 </ModalContent>
             </ModalContainer>
         </ModalWrapper>
