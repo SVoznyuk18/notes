@@ -30,8 +30,8 @@ const Modal = () => {
                             height='auto'
                             border={`solid 2px ${colors.create}`}
                             handleClick={() => handleDeleteNote(chosenNoteState?.id)}
+                            isModal
                         >
-
                             Видалити
                         </ClassicButton>
                         <ClassicButton
@@ -39,6 +39,7 @@ const Modal = () => {
                             height='auto'
                             border={`solid 2px ${colors.reject}`}
                             handleClick={handleToggleModal}
+                            isModal
                         >
                             Скасувати
                         </ClassicButton>

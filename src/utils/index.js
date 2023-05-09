@@ -19,6 +19,6 @@ export const formatFullDate = (noteDate) => {
         const formatedFullDate = moment(noteDate).format('MMMM Do YYYY, h:mm a');
         return formatedFullDate;
     }
-    
+
     return false;
 }

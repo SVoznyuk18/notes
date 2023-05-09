@@ -11,5 +11,5 @@ export const TextareaInput = styled.textarea`
     resize: none;
     letter-spacing: 1px;
     border: none;
-    background-color: ${colors.primary}
+    background-color: ${colors.primary};
 `;

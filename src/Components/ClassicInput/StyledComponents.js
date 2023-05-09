@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { media } from 'ConfigsRoot/constants';
 
 import { colors } from "ConfigsRoot/colors";
 
@@ -13,6 +14,18 @@ export const InputWrapper = styled.div`
     background-color: ${colors.primary};
     border: none;
     border-radius: 4px;
+
+    ${props => props.isSearch && css`
+        ${media.tablet} {
+            width: 50%;
+        }
+        ${media.mobile} {
+            width: 70%;
+        }
+        ${media.mobileS} {
+            width: 100%;
+        }
+    `}
 `;
 
 export const Input = styled.input`

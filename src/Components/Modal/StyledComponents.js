@@ -14,17 +14,14 @@ export const ModalWrapper = styled.div`
     transform: ${props => (props.isOpenModal ? 'scale(1)' : 'none')};
     z-index: ${props => (props.isOpenModal ? '99999' : -'10')};
     opacity: ${props => (props.isOpenModal ? 1 : 0)};
-
-
 `;
 
 export const ModalContainer = styled.div`
     position: relative;
     width: 300px;
     padding: 20px;
-    background-color: ${colors.white};
+    background-color: ${colors.modalBg};
     border-radius: 20px;
-
 `;
 
 export const CloseButton = styled.div`
@@ -49,7 +46,6 @@ export const ModalContent = styled.div`
     flex-direction: column;
     justify-content: center;
     aline-items: center;
-
 `;
 
 export const ModalTitle = styled.div`
@@ -65,5 +61,4 @@ export const ButtonSection = styled.div`
     justify-content: space-around;
     aline-items: center;
     width: 100%;
-
 `;

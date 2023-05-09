@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef } from "react";
+import React from "react";
 import PropTypes from 'prop-types';
 
 import { TextareaInput } from './StyledComponents';

@@ -27,7 +27,6 @@ const Toolsbar = () => {
                 <ClassicButton
                     width='50px'
                     height='25px'
-                    margin='0 15px 0 0'
                     colorShadow={colors.create}
                     handleClick={addNewNote}
                 >
@@ -43,7 +42,6 @@ const Toolsbar = () => {
                 <ClassicButton
                     width='50px'
                     height='25px'
-                    margin='0 15px 0 0'
                     colorShadow={colors.reject}
                     disabled={!chosenNoteState?.id}
                     handleClick={handleToggleModal}
@@ -63,10 +61,9 @@ const Toolsbar = () => {
                 <ClassicButton
                     width='50px'
                     height='25px'
-                    margin='0 15px 0 0'
                     colorShadow={colors.edit}
                     disabled={!chosenNoteState?.id}
-                    handleClick={() => handleGetById({id: chosenNoteState?.id})}
+                    handleClick={() => handleGetById({ id: chosenNoteState?.id })}
                 >
                     <SvgIcon
                         width='100%'
@@ -86,6 +83,7 @@ const Toolsbar = () => {
                     placeholder='Search'
                     onChange={(e) => setSearchState(e.target.value)}
                     value={searchState}
+                    isSearch
                 />
             </SearchSection>
         </ToolsbarWrapper>

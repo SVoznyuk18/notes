@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { colors } from "ConfigsRoot/colors";
+import { media } from 'ConfigsRoot/constants';
 
 export const WorkSpaceWrap = styled.div`
     width: 70%;
@@ -9,9 +10,19 @@ export const WorkSpaceWrap = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    margin-left: 10px;
+    margin-left: 5px;
     background-color: ${colors.primary};
     border-radius: 4px;
+
+    ${media.mobile} {
+        width: 60%;
+    }
+
+    ${media.mobileS} {
+        width: 100%;
+        height:  60%;
+        margin: 0;
+    }
 `;
 
 export const WorkSpaceTitle = styled.div`

@@ -6,11 +6,12 @@ import { colors } from "ConfigsRoot/colors";
 
 import { InputWrapper, Input, SvgWrap } from './StyledComponents';
 
-const ClassicInput = ({ path, width, height, padding, placeholder, fontSize, fontWeight, onChange, onClick, id, inputRef, name, value, disabled }) => {
+const ClassicInput = ({ path, width, height, padding, placeholder, fontSize, fontWeight, onChange, onClick, id, inputRef, name, value, disabled, isSearch }) => {
     return (
         <InputWrapper
             width={width}
             height={height}
+            isSearch={isSearch}
         >
             <Input
                 placeholder={placeholder}
@@ -26,6 +27,7 @@ const ClassicInput = ({ path, width, height, padding, placeholder, fontSize, fon
                 ref={inputRef}
                 value={value}
                 disabled={disabled}
+
             />
             <If condition={path}>
                 <SvgWrap>
@@ -58,7 +60,8 @@ ClassicInput.propTypes = {
     inputRef: PropTypes.object,
     name: PropTypes.string,
     value: PropTypes.string,
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
+    isSearch: PropTypes.bool
 };
 
 ClassicInput.defaultProps = {
@@ -76,7 +79,8 @@ ClassicInput.defaultProps = {
     inputRef: {},
     name: '',
     value: '',
-    disabled: false
+    disabled: false,
+    isSearch: false
 };
 
 export default ClassicInput;
