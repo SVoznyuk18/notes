@@ -1,20 +1,21 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import PropTypes from 'prop-types';
 
 import Context from 'UtilsRoot/Context';
-import { SvgIcon } from 'ComponentsRoot';
+import { SvgIcon, ClassicButton } from 'ComponentsRoot';
 import iconSvg from 'AssetsRoot/svg/iconSvg';
-import { ModalWrapper, ModalContent, CloseButton, ModalText } from './StyledComponents';
+import { ModalWrapper, ModalContainer, CloseButton, ModalContent, ModalTitle, ButtonSection } from './StyledComponents';
+import { colors } from "ConfigsRoot/colors";
 
 const Modal = () => {
 
-    const { setIsOpenModal, isOpenModal } = useContext(Context);
-    
-    console.log(isOpenModal)
+    const {isOpenModal, chosenNoteState, handleDeleteNote, handleToggleModal } = useContext(Context);
+
+   
     return (
         <ModalWrapper isOpenModal={isOpenModal}>
-            <ModalContent>
-                <CloseButton onClick={() => setIsOpenModal(!isOpenModal)}>
+            <ModalContainer>
+                <CloseButton onClick={handleToggleModal}>
                     <SvgIcon
                         width='18'
                         height='18'
@@ -22,10 +23,41 @@ const Modal = () => {
                         path={iconSvg.cancel}
                     />
                 </CloseButton>
-                <ModalText>
-                        some text
-                </ModalText>
-            </ModalContent>
+                <ModalContent>
+
+                    <ModalTitle>Ви впевнені, що хочете видалити нотаток "{chosenNoteState?.noteTitle}"</ModalTitle>
+                    <ButtonSection>
+                        <ClassicButton
+                            width='auto'
+                            height='auto'
+                            border={`solid 2px ${colors.green}`}
+                        //  margin={margin}
+                        //  colorShadow={colorShadow}
+                            handleClick={()=> handleDeleteNote(chosenNoteState?.id)}
+                        //  disabled={disabled}
+                        >
+
+                            Видалити
+                        </ClassicButton>
+
+                        <ClassicButton
+                            width='auto'
+                            height='auto'
+                            border={`solid 2px ${colors.orange}`}
+                        //  margin={margin}
+                        //  colorShadow={colorShadow}
+                            handleClick={handleToggleModal}
+                        //  disabled={disabled}
+                        >
+
+                            Скасувати
+                        </ClassicButton>
+
+
+                    </ButtonSection>
+
+                </ModalContent>
+            </ModalContainer>
         </ModalWrapper>
     )
 };

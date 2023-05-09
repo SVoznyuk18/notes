@@ -48,6 +48,6 @@ export const addNewNote = async (db, noteConfig) => {
 
 export const deleteNote = async (db, id) => db.notes.delete(id);
 
-// export const editNote = async (db, id, noteConfig) => {
-//     await db.notes.update(id, noteConfig);
-// }
+export const editNote = async (db, id, noteConfig) => {
+    await db.notes.update(id, noteConfig);
+}

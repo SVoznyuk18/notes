@@ -18,10 +18,10 @@ export const ModalWrapper = styled.div`
 
 `;
 
-export const ModalContent = styled.div`
+export const ModalContainer = styled.div`
     position: relative;
-    width: 500px;
-    padding: 40px;
+    width: 300px;
+    padding: 20px;
     background-color: ${colors.white};
     border-radius: 20px;
 
@@ -44,10 +44,26 @@ export const CloseButton = styled.div`
     }
 `;
 
-export const ModalText = styled.div`
-
+export const ModalContent = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     aline-items: center;
-    font-weight: 30px;
+
+`;
+
+export const ModalTitle = styled.div`
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+`;
+
+export const ButtonSection = styled.div`
+    display: flex;
+    justify-content: space-around;
+    aline-items: center;
+    width: 100%;
+
 `;

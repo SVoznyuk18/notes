@@ -16,13 +16,11 @@ function App() {
   const [newNoteState, setNewNoteState] = useState({});
   const [chosenNoteState, setChosenNoteState] = useState({});
   const [editNoteState, setEditNoteState] = useState({});
-  const [deleteNoteState, setDeleteNoteState] = useState({});
   const [searchState, setSearchState] = useState('');
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const allNotes = useLiveQuery(() => db.notes.toArray(), []);
   const filteredNotes = allNotes?.filter(note => note?.noteTitle.includes(searchState));
-
 
   const config = {
     id: 99992,
@@ -30,6 +28,8 @@ function App() {
     noteText: 'abrbrbrbbrbr',
     noteDate: 1234567
   }
+
+
 
   //   const getAllNotes = (db) => {
   //     const allNotes = useLiveQuery(() => db.notes.toArray(), []);
@@ -47,19 +47,25 @@ function App() {
     }
 
     if (Object.keys(editNoteState).length) {
-      addNewNote(db, editNoteState);
+      console.log('test');
+      editNote(db, editNoteState?.id, editNoteState);
     }
 
-    if (Object.keys(deleteNoteState).length) {
-      deleteNote(db, deleteNoteState?.id);
-    }
+  }, [newNoteState, editNoteState])
 
-  }, [newNoteState, editNoteState, deleteNoteState])
 
+  const handleDeleteNote = (id) => {
+    deleteNote(db, id);
+    handleToggleModal();
+  }
+
+  const handleToggleModal = () => {
+    setIsOpenModal(!isOpenModal);
+  }
 
 
   return (
-    <Context.Provider value={{ setNewNoteState, filteredNotes, setChosenNoteState, chosenNoteState, editNoteState, setEditNoteState, setDeleteNoteState, setSearchState, searchState, setIsOpenModal, isOpenModal }}>
+    <Context.Provider value={{ setNewNoteState, filteredNotes, setChosenNoteState, chosenNoteState, editNoteState, setEditNoteState, setSearchState, searchState, isOpenModal, handleDeleteNote, handleToggleModal }}>
       <div className="App">
         <Toolsbar />
         <Wrapper>

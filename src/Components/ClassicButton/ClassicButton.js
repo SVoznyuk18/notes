@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Button } from './StyledComponents';
 
-const ClassicButton = memo(({ children, width, height, margin, colorShadow, handleClick, disabled }) => {
+const ClassicButton = memo(({ children, width, height, margin, colorShadow, handleClick, disabled, border,padding }) => {
     return (
         <Button
             width={width}
@@ -12,6 +12,8 @@ const ClassicButton = memo(({ children, width, height, margin, colorShadow, hand
             colorShadow={colorShadow}
             onClick={handleClick}
             disabled={disabled}
+            border={border}
+            padding={padding}
         >
             {children}
         </Button>
@@ -25,7 +27,9 @@ ClassicButton.propTypes = {
     margin: PropTypes.string,
     colorShadow: PropTypes.string,
     handleClick: PropTypes.func,
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
+    border: PropTypes.string,
+    padding: PropTypes.string
 };
 
 ClassicButton.defaultProps = {
@@ -34,7 +38,9 @@ ClassicButton.defaultProps = {
     margin: '',
     colorShadow: '',
     handleClick: () => { },
-    disabled: false
+    disabled: false,
+    border: '',
+    padding: ''
 };
 
 

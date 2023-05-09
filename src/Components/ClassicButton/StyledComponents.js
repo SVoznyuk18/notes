@@ -4,10 +4,10 @@ import { colors } from "ConfigsRoot/colors";
 export const Button = styled.button`
     width: ${props => props.width || '40px'};
     height: ${props => props.height || '25px'};
-    padding: 3px 2px;
+    padding: ${props => props.padding || '3px 2px'};
     margin: ${props => props.margin || '0px'};
     background-color: ${colors.white};
-    border: none;
+    border: ${props => props.border || 'none'};
     border-radius: 4px;
     cursor: pointer;
 
