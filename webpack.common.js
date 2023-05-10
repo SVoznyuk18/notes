@@ -9,8 +9,6 @@ module.exports = {
       ComponentsRoot: path.resolve(__dirname, './src/components'),
       AssetsRoot: path.resolve(__dirname, './src/assets'),
       UtilsRoot: path.resolve(__dirname, './src/utils'),
-      LayoutRoot: path.resolve(__dirname, './src/layout'),
-      ContainersRoot: path.resolve(__dirname, './src/containers')
     },
     extensions: ['.js', '.jsx', '.json']
   },
