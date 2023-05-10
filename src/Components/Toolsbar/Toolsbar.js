@@ -9,7 +9,7 @@ import { ToolsbarWrapper, ButtonsSection, SearchSection } from './StyledComponen
 
 const Toolsbar = () => {
 
-    const { chosenNoteState, setSearchState, searchState, handleToggleModal, handleAddNote, handleGetById } = useContext(Context);
+    const { chosenNoteState, setSearchState, searchState, handleToggleModal, handleAddNote, setIsDisabledInput, isDisabledInput } = useContext(Context);
 
     const addNewNote = () => {
         const noteConfig = {
@@ -63,7 +63,7 @@ const Toolsbar = () => {
                     height='25px'
                     colorShadow={colors.edit}
                     disabled={!chosenNoteState?.id}
-                    handleClick={() => handleGetById({ id: chosenNoteState?.id })}
+                    handleClick={() => setIsDisabledInput(!isDisabledInput)}
                 >
                     <SvgIcon
                         width='100%'

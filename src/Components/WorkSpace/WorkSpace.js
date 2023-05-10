@@ -8,7 +8,7 @@ import { WorkSpaceWrap, WorkSpaceTitle, Form } from './StyledComponents';
 
 const WorkSpace = () => {
 
-    const { editNoteState, setEditNoteState, chosenNoteState, handleEditNote } = useContext(Context);
+    const { chosenNoteState, setChosenNoteState, handleEditNote, isDisabledInput } = useContext(Context);
     const textareaRef = useRef();
     const inputRef = useRef();
 
@@ -18,12 +18,12 @@ const WorkSpace = () => {
         const value = e.target.value;
 
         const noteConfig = {
-            ...editNoteState,
+            ...chosenNoteState,
             [name]: value
         }
-        setEditNoteState(() => {
+        setChosenNoteState(() => {
             return {
-                ...editNoteState,
+                ...chosenNoteState,
                 [name]: value
             }
         })
@@ -49,7 +49,7 @@ const WorkSpace = () => {
 
     return (
         <WorkSpaceWrap>
-            <WorkSpaceTitle>{formatFullDate(editNoteState?.noteDate)}</WorkSpaceTitle>
+            <WorkSpaceTitle>{formatFullDate(chosenNoteState?.noteDate)}</WorkSpaceTitle>
             <Form onChange={handleChange}>
                 <ClassicInput
                     width='100%'
@@ -59,18 +59,18 @@ const WorkSpace = () => {
                     padding='0 20px'
                     fontSize='16px'
                     fontWeight='600'
-                    value={editNoteState?.noteTitle}
+                    value={chosenNoteState?.noteTitle}
                     inputRef={inputRef}
-                    disabled={!editNoteState?.id}
+                    disabled={isDisabledInput}
 
                 />
                 <Textarea
                     height='calc(100% - 40px - 20px)'
                     textareaRef={textareaRef}
-                    value={editNoteState?.noteText}
+                    value={chosenNoteState?.noteText}
                     id='noteText'
                     name='noteText'
-                    disabled={!editNoteState?.id}
+                    disabled={isDisabledInput}
                 />
             </Form>
         </WorkSpaceWrap>

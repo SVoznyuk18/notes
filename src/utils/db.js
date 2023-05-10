@@ -19,8 +19,4 @@ const get = async () => {
     return await db.notes.toArray();
 };
 
-const getById = async query => {
-    return await db.notes.where({ ...query }).toArray();
-};
-
-export { add, del, update, get, getById };
+export { add, del, update, get };

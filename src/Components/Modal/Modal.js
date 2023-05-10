@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import PropTypes from 'prop-types';
 
 import Context from 'UtilsRoot/Context';
 import { SvgIcon, ClassicButton } from 'ComponentsRoot';
@@ -49,15 +48,5 @@ const Modal = () => {
         </ModalWrapper>
     )
 };
-
-Modal.propTypes = {
-    isOpenModal: PropTypes.bool,
-    onCloseModal: PropTypes.func,
-}
-
-Modal.defaultProps = {
-    isOpenModal: false,
-    onCloseModal: () => { }
-}
 
 export default Modal;
