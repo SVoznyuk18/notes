@@ -34,6 +34,7 @@ function App() {
         del(id);
         handleToggleModal();
         handleGet();
+        setChosenNoteState({});
     }
 
     const handleToggleModal = () => {
