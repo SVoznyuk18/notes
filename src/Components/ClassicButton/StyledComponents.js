@@ -17,6 +17,10 @@ export const Button = styled.button`
         &:hover {
             box-shadow:  ${props => props.colorShadow ? `${props.colorShadow} 0px 3px 3px 0px, ${props.colorShadow} 0px 4px 6px 0px` : ''};
         }
+
+        &:active {
+            transform: translate(0px, 2px);
+        }
     `}
     
     ${props => !props.isModal && css`
