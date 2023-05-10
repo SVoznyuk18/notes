@@ -3,7 +3,6 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  mode: 'development',
   resolve: {
     alias: {
       ConfigsRoot: path.resolve(__dirname, './src/configs'),
@@ -24,8 +23,8 @@ module.exports = {
     historyApiFallback: true,
   },
   plugins: [
-    new HTMLWebpackPlugin({template: "./public/index.html", favicon: './public/favicon.ico'}),
-    new MiniCssExtractPlugin({filename: '[name].[contenthash].css'})
+    new HTMLWebpackPlugin({ template: "./public/index.html", favicon: './public/favicon.ico' }),
+    new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' })
   ],
   module: {
     rules: [
@@ -56,16 +55,16 @@ module.exports = {
       {
         test: /\.(c|sa|sc)ss$/i,
         use: [
-            MiniCssExtractPlugin.loader, 
-            "css-loader",
-            {
-                loader: 'postcss-loader',
-                options: {
-                    postcssOptions: {
-                        plugins: [require('postcss-preset-env')]
-                    }
-                }
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [require('postcss-preset-env')]
+              }
             }
+          }
         ],
       },
       {
